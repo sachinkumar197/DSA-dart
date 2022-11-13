@@ -15,7 +15,19 @@ int binarySearch(List<dynamic> xs, int start, int end, int key) {
   return -1;
 }
 
+List<dynamic> deleteElem(List<dynamic> xs, int d) {
+  var _index = binarySearch(xs, 0, xs.length - 1, d);
+  if (_index != -1) {
+    for (var i = _index; i < xs.length - 1; i++) {
+      xs[i] = xs[i + 1];
+    }
+    return xs.sublist(0, xs.length - 1);
+  }
+  return xs;
+}
+
 void main() {
   var x = [1, 2, 3, 4, 5, 6, 7];
-  print(binarySearch(x, 0, x.length, 5));
+  // print(binarySearch(x, 0, x.length, 50));
+  print(deleteElem(x, 5));
 }
